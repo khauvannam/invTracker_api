@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Folders\folder;
+use App\Models\Folders\Folder;
+use App\Models\Items\Item;  
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -17,10 +18,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-        Folder::factory()->withChildren()->create();
+        User::factory()->create();
+        // Folder::factory()->withChildren()->create();
+        Item::factory()->count(10)->create();
+
     }
 }

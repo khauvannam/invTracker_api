@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class folder extends Model
+class Folder extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class folder extends Model
 
     public function child(): HasMany
     {
-        return $this->hasMany(folder::class, 'parent_id');
+        return $this->hasMany(Folder::class, 'parent_id');
     }
 }

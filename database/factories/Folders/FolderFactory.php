@@ -2,12 +2,11 @@
 
 namespace Database\Factories\Folders;
 
-use App\Models\Folders\folder;
+use App\Models\Folders\Folder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FolderFactory extends Factory
 {
-
     public function definition(): array
     {
         return [

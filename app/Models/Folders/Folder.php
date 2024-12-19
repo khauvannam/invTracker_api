@@ -12,8 +12,11 @@ class Folder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'inventory_id', 'parent_id'];
-
+    protected $fillable = ['name', 'description', 'inventory_id', 'parent_id', 'notes', 'photos','qrcode', 'custom_fields'];
+    protected $casts = [
+        'photos' => 'array',
+        'custom_fields' => 'array',
+    ];
     public function child(): HasMany
     {
         return $this->hasMany(Folder::class, 'parent_id');
@@ -23,4 +26,5 @@ class Folder extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+   
 }

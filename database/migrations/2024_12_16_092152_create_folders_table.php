@@ -11,9 +11,14 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->text('notes')->nullable(); 
+            $table->json('photos')->nullable(); 
+            $table->text('qrcode')->nullable(); 
+            $table->json('custom_fields')->nullable();
             $table->foreignId('parent_id')->nullable()->index();
             $table->foreignId('inventory_id')->index();
             $table->timestamps();
+            
         });
     }
 

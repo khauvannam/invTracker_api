@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Folder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Folders\folder;
 use Illuminate\Http\Request;
 
-class folderController extends Controller
+class   FolderController extends Controller
 {
     public function index()
     {

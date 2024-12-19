@@ -6,6 +6,7 @@ use App\Models\Folders\folder;
 use App\Models\Items\Item;
 use App\Models\Tags\Tag;
 use App\Models\User;
+use App\Models\Histories\UserHistory;
 use Illuminate\Database\Seeder;
 
 
@@ -26,6 +27,9 @@ class DatabaseSeeder extends Seeder
         Tag::factory()->count(10)->create();
 
         Item::factory()->count(10)->create();
+
+        UserHistory::factory()->create();
+
 
     }
 }

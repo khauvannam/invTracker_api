@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create();
-        // Folder::factory()->withChildren()->create();
+        Folder::factory()->withChildren()->create();
         Item::factory()->count(10)->create();
 
     }

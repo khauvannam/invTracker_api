@@ -13,7 +13,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->word,  
             'quantity' => $this->faker->numberBetween(1, 100),  
-            'alert_level' => $this->faker->numberBetween(1, 10),  
+            'alert' => $this->faker->numberBetween(1, 10),  
             'price' => $this->faker->randomFloat(2, 10, 1000),  
             'images' => json_encode([$this->faker->imageUrl(), $this->faker->imageUrl()]),  
             'notes' => $this->faker->sentence,  

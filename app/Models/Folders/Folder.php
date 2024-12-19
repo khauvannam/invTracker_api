@@ -10,10 +10,22 @@ class Folder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'inventory_id', 'parent_id'];
-
+    protected $fillable = ['name', 'description', 'inventory_id', 'parent_id', 'notes', 'qr_code'];
     public function child(): HasMany
     {
         return $this->hasMany(folder::class, 'parent_id');
+    }
+    public function parent()
+    {
+        return $this->belongsTo(Folder::class, 'parent_id');
+    }
+    public function setCustomFields(array $fields)
+    {
+        $this->custom_fields = json_encode($fields);
+        $this->save();
+    }
+    public function getCustomFields(): array
+    {
+        return json_decode($this->custom_fields, true) ?? [];
     }
 }

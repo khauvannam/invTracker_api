@@ -11,21 +11,17 @@ class Tag extends Model
     use HasFactory;
 
     // Tên bảng (nếu khác với tên mặc định)
-    protected $table = 'tags';
+    protected $table = 'tag_relationship';
 
     // Các cột có thể được gán giá trị
     protected $fillable = [
-        'name',
+        'tag_id','folder_id',
     ];
 
 
-    /**
-     * Mối quan hệ với Folder.
-     * Một Tag có thể thuộc về một Folder.
-     */
     public function folders()
     {
-        return $this->hasMany(Folder::class);
+        return $this->belongsToMany(Folder::class);
     }
 
     // public function items()

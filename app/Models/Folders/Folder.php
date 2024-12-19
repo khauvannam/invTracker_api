@@ -15,7 +15,7 @@ class Folder extends Model
 
     public function child(): HasMany
     {
-        return $this->hasMany(folder::class, 'parent_id');
+        return $this->hasMany(Folder::class, 'parent_id');
     }
 
     public function tags()

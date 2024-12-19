@@ -4,7 +4,7 @@ namespace App\Repositories\UsersHistory;
 
 use App\Models\Histories\UserHistory;
 
-class UsersHistoryRepository
+class UserHistoryRepository
 {
     protected UserHistory $UserHistory;
 

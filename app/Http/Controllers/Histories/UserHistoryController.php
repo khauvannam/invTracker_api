@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Histories;
 use App\Models\Items;
-use App\Models\Folder;
+use App\Models\Folders;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\UserHistoryService;

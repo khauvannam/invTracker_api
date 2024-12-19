@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('relationship_tag', function (Blueprint $table) {
+        Schema::create('tag_relationship', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tag_id')->constrained()->onDelete('cascade'); // Khóa ngoại tới bảng tags
             // $table->foreignId('item_id')->nullable()->constrained()->onDelete('cascade'); 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('relationship_tag');
+        Schema::dropIfExists('tag_relationship');
     }
 };

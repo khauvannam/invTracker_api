@@ -14,7 +14,9 @@ class Tag extends Model
     protected $table = 'tags';
 
     // Các cột có thể được gán giá trị
-    protected $fillable = ['name', 'items_id', 'folder_id'];
+    protected $fillable = [
+        'name',
+    ];
 
 
     /**
@@ -25,4 +27,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Folder::class);
     }
+
+    // public function items()
+    // {
+    //     return $this->belongsToMany(Folder::class);
+    // }
 }

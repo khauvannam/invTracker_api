@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('add_new_field', function (Blueprint $table) {
+            $table->Serial_Number();
+            $table->decimal('Model/Part_Number'); 
+            $table->unsignedInteger('quantity'); 
+            $table->unsignedInteger('Purchase_Date'); 
+            $table->json('Expiry Date')->nullable();
+            $table->text('Size')->nullable(); 
+        });
     }
-
     /**
      * Reverse the migrations.
      */

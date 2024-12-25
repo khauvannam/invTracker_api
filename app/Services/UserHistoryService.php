@@ -14,9 +14,19 @@ class UserHistoryService
         $this->repository = $repository;
     }
 
-    public function createHistory($userId, $activityType, $folderId, $itemId)
+    public function createHistory(array $data): array
     {
-        return $this->repository->createHistory($userId, $activityType, $folderId, $itemId);
+        return $this->repository->createHistory($data);
+    }
+
+    public function find(int $id): array
+    {
+        return $this->repository->find($id);
+    }
+    
+    public function delete(int $id): bool
+    {
+        return $this->repository->delete($id);
     }
 
     public function show(): array

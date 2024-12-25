@@ -13,19 +13,25 @@ class UserHistoryRepository
         $this->UserHistory = $UserHistory;
     }
 
-    public function createHistory($userId, $activityType, $folderId, $itemId)
+    public function createHistory(array $data): UserHistory
     {
-        return $this->UserHistory->create([
-            'user_id' => $userId,
-            'activity_type' => $activityType,
-            'folder_id' => $folderId,
-            'item_id' => $itemId
+        return $this->UserHistory->create($data);
+    }
 
-        ]);
+    public function find(int $id): UserHistory
+    {
+        return $this->UserHistory->find($id);
+    }
+
+    public function delete(int $id): bool
+    {
+        return $this->UserHistory->find($id)->delete();
     }
 
     public function show(): array
     {
         return $this->UserHistory->all()->toArray();
     }
+
+
 }

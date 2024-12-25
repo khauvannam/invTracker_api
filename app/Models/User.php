@@ -22,6 +22,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'information',
+        'preferences',
+        'company_details',
+        'addresses',
+    ];
+
+    protected $casts = [
+        'information' => 'array',
+        'preferences' => 'array',
+        'company_details' => 'array',
+        'addresses' => 'array',
     ];
 
     /**
@@ -44,6 +55,10 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'infomation' => 'array',
+            'preferences' => 'array',
+            'companydetails' => 'array',
+            'addresses' => 'array',
         ];
     }
 }

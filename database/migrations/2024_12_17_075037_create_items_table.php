@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); 
             $table->unsignedInteger('quantity'); 
-            $table->unsignedInteger('alert_level'); 
+            $table->unsignedInteger('alert'); 
             $table->decimal('price', 10, 2); 
             $table->json('images')->nullable();
             $table->text('notes')->nullable(); 

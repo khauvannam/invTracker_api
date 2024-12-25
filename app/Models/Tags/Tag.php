@@ -4,7 +4,8 @@ namespace App\Models\Tags;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Folders\Folder;
+use App\Models\Tags\TagRelationship;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
@@ -23,9 +24,9 @@ class Tag extends Model
      * Mối quan hệ với Folder.
      * Một Tag có thể thuộc về một Folder.
      */
-    public function folders()
+    public function TagRelationship(): HasMany
     {
-        return $this->hasMany(Folder::class);
+        return $this->hasMany(TagRelationship::class);
     }
 
     // public function items()

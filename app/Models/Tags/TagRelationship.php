@@ -5,8 +5,9 @@ namespace App\Models\Tags;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Folders\Folder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Tag extends Model
+class TagRelationship extends Model
 {
     use HasFactory;
 
@@ -19,9 +20,9 @@ class Tag extends Model
     ];
 
 
-    public function folders()
+    public function folders(): hasMany
     {
-        return $this->belongsToMany(Folder::class);
+        return $this->hasMany(Folder::class);
     }
 
     // public function items()

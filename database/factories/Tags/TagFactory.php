@@ -21,7 +21,6 @@ class TagFactory extends Factory
         return [
             'name' => $this->faker->word(), // Random name for the tag
             // 'items_id' => Item::inRandomOrder()->first()->id ?? null, 
-            'folder_id' => Folder::inRandomOrder()->first()->id ?? null, 
         ];
     }
 }

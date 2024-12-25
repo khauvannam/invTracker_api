@@ -8,20 +8,24 @@ class UserHistoryRepository
 {
     protected UserHistory $UserHistory;
 
-     public function __construct(UserHistory $UserHistory) {
+    public function __construct(UserHistory $UserHistory)
+    {
         $this->UserHistory = $UserHistory;
     }
+
     public function createHistory($userId, $activityType, $folderId, $itemId)
     {
         return $this->UserHistory->create([
             'user_id' => $userId,
             'activity_type' => $activityType,
-            'folder_id'=> $folderId, 
-            'item_id'=>$itemId
+            'folder_id' => $folderId,
+            'item_id' => $itemId
 
         ]);
     }
-    public function show(){
+
+    public function show(): array
+    {
         return $this->UserHistory->all()->toArray();
     }
 }

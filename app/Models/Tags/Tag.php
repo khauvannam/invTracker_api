@@ -2,21 +2,29 @@
 
 namespace App\Models\Tags;
 
-use App\Models\Folders\Folder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
     use HasFactory;
 
+    // Tên bảng (nếu khác với tên mặc định)
     protected $table = 'tags';
 
-    protected $fillable = ['name', 'items_id', 'folder_id'];
+    // Các cột có thể được gán giá trị
+    protected $fillable = [
+        'name',
+    ];
 
-    public function folders(): BelongsToMany
+    public function tagRelationship(): HasMany
     {
-        return $this->belongsToMany(Folder::class);
+        return $this->hasMany(TagRelationship::class);
     }
+
+    // public function items()
+    // {
+    //     return $this->belongsToMany(Folder::class);
+    // }
 }

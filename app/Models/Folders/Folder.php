@@ -2,10 +2,11 @@
 
 namespace App\Models\Folders;
 
+use App\Models\Tags\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\Tags\Tag;
 
 class Folder extends Model
 {
@@ -18,7 +19,7 @@ class Folder extends Model
         return $this->hasMany(Folder::class, 'parent_id');
     }
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }

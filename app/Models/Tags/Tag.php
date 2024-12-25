@@ -18,11 +18,6 @@ class Tag extends Model
         'name',
     ];
 
-
-    /**
-     * Mối quan hệ với Folder.
-     * Một Tag có thể thuộc về một Folder.
-     */
     public function tagRelationship(): HasMany
     {
         return $this->hasMany(TagRelationship::class);

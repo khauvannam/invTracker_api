@@ -15,14 +15,10 @@ class TagRelationship extends Model
         'tag_id', 'folder_id',
     ];
 
-
     public function folders(): BelongsToMany
     {
         return $this->belongsToMany(Folder::class);
     }
 
-    // public function items()
-    // {
-    //     return $this->belongsToMany(Folder::class);
-    // }
+
 }

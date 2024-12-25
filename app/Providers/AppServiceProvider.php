@@ -4,15 +4,17 @@ namespace App\Providers;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Tag\TagRepositoryInterface;
+use App\Repositories\Tag\TagRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
-        //
+        // Bind the TagRepositoryInterface to TagRepository
     }
 
     /**

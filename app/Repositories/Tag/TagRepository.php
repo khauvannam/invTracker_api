@@ -30,7 +30,7 @@ class TagRepository
         return $this->model->create($data);
     }
 
-    public function update($id, array $data)
+    public function update($id, array $data): _IH_Tag_C|array|Tag
     {
         $tag = $this->findById($id);
         $tag->update($data);

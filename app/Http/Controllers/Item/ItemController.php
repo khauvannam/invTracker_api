@@ -21,7 +21,6 @@ class ItemController extends Controller
         return response()->json($this->itemService->getAllItems());
     }
 
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -38,12 +37,10 @@ class ItemController extends Controller
         return response()->json($this->itemService->createItem($data), 201);
     }
 
-
     public function show($id)
     {
         return response()->json($this->itemService->getItemById($id));
     }
-
 
     public function update(Request $request, $id)
     {

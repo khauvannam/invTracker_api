@@ -1,6 +1,6 @@
 <?php
 
-namespace Folder;
+namespace Tests\Controller;
 
 use App\Models\Folders\Folder;
 use Illuminate\Foundation\Testing\RefreshDatabase;

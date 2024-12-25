@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Folders\folder;
 use Illuminate\Http\Request;
 
-class  FolderController extends Controller
+class FolderController extends Controller
 {
     public function index()
     {
@@ -15,9 +15,7 @@ class  FolderController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-
-        ]);
+        $data = $request->validate([]);
 
         return folder::create($data);
     }

@@ -19,6 +19,4 @@ class TagRelationship extends Model
     {
         return $this->belongsToMany(Folder::class);
     }
-
-
 }

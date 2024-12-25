@@ -24,7 +24,7 @@ class UserHistoryRepository
         ]);
     }
 
-    public function show()
+    public function show(): array
     {
         return $this->UserHistory->all()->toArray();
     }

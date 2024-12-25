@@ -38,7 +38,6 @@ class TagController extends Controller
         return response()->json($tag, 201); // Trả về dữ liệu JSON với mã trạng thái 201 (đã tạo thành công)
     }
 
-    // Cập nhật tag
     public function update(Request $request, $id)
     {
         $data = $request->validate([

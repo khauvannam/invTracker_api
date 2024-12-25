@@ -32,10 +32,14 @@ class UserHistoryController extends Controller
         return response()->json($history, 201);
     }
 
+    public function update()
+    {
+    }
+
     public function destroy(int $id)
     {
         $history = $this->service->delete($id);
         return response()->json($history);
     }
-    
+
 }

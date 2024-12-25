@@ -4,6 +4,8 @@ namespace App\Services;
 
 
 use App\Repositories\UsersHistory\UserHistoryRepository;
+use App\Models\Histories\UserHistory;
+
 
 class UserHistoryService
 {
@@ -14,12 +16,12 @@ class UserHistoryService
         $this->repository = $repository;
     }
 
-    public function createHistory(array $data): array
+    public function createHistory(array $data): UserHistory
     {
         return $this->repository->createHistory($data);
     }
 
-    public function find(int $id): array
+    public function find(int $id): UserHistory
     {
         return $this->repository->find($id);
     }

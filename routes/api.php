@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Folder\FolderController;
 use App\Http\Controllers\Histories\UserHistoryController;
 use App\Http\Controllers\TagController\TagController;
 use Illuminate\Http\Request;
@@ -14,3 +15,5 @@ Route::get("history", [UserHistoryController::class, "show"]);
 Route::apiResource('tags', TagController::class);
 
 Route::apiResource('user', UserController::class);
+
+Route::apiResource('folders', FolderController::class);

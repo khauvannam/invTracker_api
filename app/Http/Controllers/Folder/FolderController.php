@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Folders\folder;
 use Illuminate\Http\Request;
 
-class   FolderController extends Controller
+class  FolderController extends Controller
 {
     public function index()
     {

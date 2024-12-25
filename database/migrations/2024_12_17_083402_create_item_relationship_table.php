@@ -17,12 +17,12 @@ return new class extends Migration
             $table->unsignedBigInteger('tag_id');    
             $table->timestamps();
             $table->unique(['item_id', 'tag_id']);
+
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('item_relationship');

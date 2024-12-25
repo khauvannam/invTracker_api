@@ -4,7 +4,6 @@ namespace App\Repositories\Tag;
 
 use App\Models\Tags\Tag;
 use Illuminate\Database\Eloquent\Collection;
-use LaravelIdea\Helper\App\Models\Tags\_IH_Tag_C;
 
 class TagRepository
 {
@@ -15,12 +14,12 @@ class TagRepository
         $this->model = $model;
     }
 
-    public function getAll(): _IH_Tag_C|Collection|array
+    public function getAll(): Collection
     {
         return $this->model->all();
     }
 
-    public function findById($id): _IH_Tag_C|array|Tag
+    public function findById($id): Tag
     {
         return $this->model->findOrFail($id);
     }
@@ -30,7 +29,7 @@ class TagRepository
         return $this->model->create($data);
     }
 
-    public function update($id, array $data): _IH_Tag_C|array|Tag
+    public function update($id, array $data): Tag
     {
         $tag = $this->findById($id);
         $tag->update($data);

@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Tag;
 
-use App\Models\Tags\Tag;
+use App\Models\Tags\TagRelationship;
 
 class TagRepository
 {
     protected $model;
 
-    public function __construct(Tag $model)
+    public function __construct(TagRelationship $model)
     {
         $this->model = $model;
     }

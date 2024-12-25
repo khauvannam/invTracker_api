@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Item;
 
 use App\Http\Controllers\Controller;
 use App\Services\ItemService;
@@ -8,20 +8,20 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    protected $itemService;
+    protected ItemService $itemService;
 
     public function __construct(ItemService $itemService)
     {
         $this->itemService = $itemService;
     }
 
-   
+
     public function index()
     {
         return response()->json($this->itemService->getAllItems());
     }
 
-   
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -38,13 +38,13 @@ class ItemController extends Controller
         return response()->json($this->itemService->createItem($data), 201);
     }
 
-    
+
     public function show($id)
     {
         return response()->json($this->itemService->getItemById($id));
     }
 
-   
+
     public function update(Request $request, $id)
     {
         $data = $request->validate([

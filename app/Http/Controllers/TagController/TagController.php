@@ -1,27 +1,26 @@
 <?php
+
 namespace App\Http\Controllers\TagController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\Tag\TagService;
+use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    protected $tagService;
+    protected TagService $tagService;
 
     public function __construct(TagService $tagService)
     {
         $this->tagService = $tagService;
     }
 
-    // Lấy danh sách tất cả các tag
     public function index()
     {
         $tags = $this->tagService->getAllTags();
         return response()->json($tags); // Trả về dữ liệu JSON
     }
 
-    // Lấy thông tin chi tiết một tag
     public function show($id)
     {
         $tag = $this->tagService->getTagById($id);
@@ -34,7 +33,7 @@ class TagController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        
+
         $tag = $this->tagService->createTag($data);
         return response()->json($tag, 201); // Trả về dữ liệu JSON với mã trạng thái 201 (đã tạo thành công)
     }

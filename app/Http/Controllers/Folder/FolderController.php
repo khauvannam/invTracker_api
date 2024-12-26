@@ -3,23 +3,32 @@
 namespace App\Http\Controllers\Folder;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Folders\Folder;
+=======
+use App\Models\Folders\folder;
+>>>>>>> origin/namdeptrai
 use Illuminate\Http\Request;
 
 class FolderController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
         $folders = Folder::with(['child', 'tags'])->get();
 
         return response()->json([
             'success' => true,
             'data' => $folders,
         ]);
+=======
+        return folder::all();
+>>>>>>> origin/namdeptrai
     }
 
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -68,10 +77,27 @@ class FolderController extends Controller
             'photos.*' => 'string',
             'qrcode' => 'nullable|string',
             'custom_fields' => 'nullable|array',
+=======
+        $data = $request->validate([]);
+
+        return folder::create($data);
+    }
+
+    public function show(folder $folder)
+    {
+        return $folder;
+    }
+
+    public function update(Request $request, folder $folder)
+    {
+        $data = $request->validate([
+
+>>>>>>> origin/namdeptrai
         ]);
 
         $folder->update($data);
 
+<<<<<<< HEAD
         // Cập nhật quan hệ tags nếu có
         if ($request->has('tags')) {
             $folder->tags()->sync($request->input('tags'));
@@ -92,5 +118,15 @@ class FolderController extends Controller
             'success' => true,
             'message' => 'Folder deleted successfully.',
         ]);
+=======
+        return $folder;
+    }
+
+    public function destroy(folder $folder)
+    {
+        $folder->delete();
+
+        return response()->json();
+>>>>>>> origin/namdeptrai
     }
 }

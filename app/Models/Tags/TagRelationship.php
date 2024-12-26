@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TagRelationship extends Model
 {
-
     protected $table = 'tag_relationship';
-
     protected $fillable = [
         'tag_id', 'folder_id',
     ];

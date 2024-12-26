@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\TagController;
 
 use App\Http\Controllers\Controller;
-use App\Services\Tag\TagService;
+use App\Services\TagService;
 use Illuminate\Http\Request;
 
 class TagController extends Controller

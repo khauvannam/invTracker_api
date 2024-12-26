@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Histories;
+namespace Tests\Controller;
 
-use Mockery;
-use App\Services\UserHistoryService;
 use App\Http\Controllers\Histories\UserHistoryController;
-use Illuminate\Http\JsonResponse;
 use App\Models\Histories\UserHistory;
+use App\Services\UserHistoryService;
+use Illuminate\Http\JsonResponse;
+use Mockery;
 use Tests\TestCase;
 
 class UserHistoryControllerTest extends TestCase
@@ -76,24 +76,24 @@ class UserHistoryControllerTest extends TestCase
             'folder_id' => null,
             'item_id' => 123,
         ];
-    
+
         $history = UserHistory::factory()->make(array_merge(['id' => 1], $data));
-    
+
         $this->userHistoryService
             ->shouldReceive('createHistory')
             ->once()
             ->with($data)
             ->andReturn($history);
-    
+
         // Giả lập request với dữ liệu
         $this->app['request']->replace($data);
-    
+
         $response = $this->userHistoryController->store();
-    
+
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertEquals($history->toArray(), $response->getData(true));
     }
-    
+
 
     public function testDestroy()
     {
@@ -102,12 +102,10 @@ class UserHistoryControllerTest extends TestCase
             ->once()
             ->with(1)
             ->andReturn(true); // Trả về kiểu bool
-    
+
         $response = $this->userHistoryController->destroy(1);
-    
+
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertEquals(['success' => true], $response->getData(true)); // Kiểm tra phản hồi
     }
-    
-    
 }

@@ -1,11 +1,11 @@
-<?php 
-namespace App\Services\Tag;
+<?php
+namespace App\Services;
 
-use App\Repositories\Tag\TagRepository;
+use App\Repositories\TagRepository;
 
 class TagService
 {
-    protected $repository;
+    protected TagRepository $repository;
 
     public function __construct(TagRepository $repository)
     {

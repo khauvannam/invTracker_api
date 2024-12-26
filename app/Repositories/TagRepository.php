@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Tag;
+namespace App\Repositories;
 
 use App\Models\Tags\Tag;
 use Illuminate\Database\Eloquent\Collection;

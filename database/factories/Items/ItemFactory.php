@@ -17,7 +17,6 @@ class ItemFactory extends Factory
             'price' => $this->faker->randomFloat(2, 10, 1000),  
             'images' => json_encode([$this->faker->imageUrl(), $this->faker->imageUrl()]),  
             'notes' => $this->faker->sentence,  
-            'field' => json_encode(['type' => 'custom', 'value' => $this->faker->word]),  
             'folder_id' => Folder::factory(), 
         ];
     }

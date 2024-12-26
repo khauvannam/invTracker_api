@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('price', 10, 2); 
             $table->json('images')->nullable();
             $table->text('notes')->nullable(); 
-            $table->json('field')->nullable();
             $table->unsignedBigInteger('folder_id');
             $table->foreign('folder_id')->references('id')->on('folders')->onDelete('cascade');
             $table->timestamps(); 

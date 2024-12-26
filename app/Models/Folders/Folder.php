@@ -3,6 +3,8 @@
 namespace App\Models\Folders;
 
 use App\Models\Tags\TagRelationship;
+use App\Models\Field\CustomField;
+use App\Models\Field\CustomFieldRelationship;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,14 +32,28 @@ class Folder extends Model
         return $this->belongsTo(Folder::class, 'parent_id');
     }
 
-    public function setCustomFields(array $fields): void
+    // public function setCustomFields(array $fields): void
+    // {
+    //     $this->custom_fields = json_encode($fields);
+    //     $this->save();
+    // }
+
+    // public function getCustomFields(): array
+    // {
+    //     return json_decode($this->custom_fields, true) ?? [];
+    // }
+    public function customFieldRelationships()
     {
-        $this->custom_fields = json_encode($fields);
-        $this->save();
+        return $this->hasMany(CustomFieldRelationship::class, 'item_id');
     }
 
-    public function getCustomFields(): array
+    public function customFields()
     {
-        return json_decode($this->custom_fields, true) ?? [];
+        return $this->belongsToMany(
+            CustomField::class,
+            'custom_field_relationships',
+            'item_id',
+            'custom_field_id'
+        )->withPivot('value'); // Truy cập cột `value` trong bảng trung gian
     }
 }

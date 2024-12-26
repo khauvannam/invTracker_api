@@ -1,18 +1,21 @@
 <?php
 
-namespace Tests\Feature\Tag;
+namespace Tests\Controller;
 
+use App\Models\Tags\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use App\Models\Tags\Tag;
 
 class TagControllerTest extends TestCase
 {
-    use RefreshDatabase; // Tự động làm sạch database sau mỗi test
+    use RefreshDatabase;
+
+
     use WithFaker;
 
-    protected $tag;
+    protected Tag $tag;
 
     protected function setUp(): void
     {
@@ -22,28 +25,28 @@ class TagControllerTest extends TestCase
         $this->tag = Tag::factory()->create();
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_can_get_all_tags()
     {
         $response = $this->getJson('/api/tags');
 
         $response->assertStatus(200)
-                 ->assertJsonStructure([['id', 'name', 'created_at', 'updated_at']]);
+            ->assertJsonStructure([['id', 'name', 'created_at', 'updated_at']]);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_can_get_a_single_tag()
     {
         $response = $this->getJson("/api/tags/{$this->tag->id}");
 
         $response->assertStatus(200)
-                 ->assertJson([
-                     'id' => $this->tag->id,
-                     'name' => $this->tag->name,
-                 ]);
+            ->assertJson([
+                'id' => $this->tag->id,
+                'name' => $this->tag->name,
+            ]);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_can_create_a_tag()
     {
         $data = ['name' => $this->faker->word];
@@ -51,14 +54,14 @@ class TagControllerTest extends TestCase
         $response = $this->postJson('/api/tags', $data);
 
         $response->assertStatus(201)
-                 ->assertJson([
-                     'name' => $data['name'],
-                 ]);
+            ->assertJson([
+                'name' => $data['name'],
+            ]);
 
         $this->assertDatabaseHas('tags', $data);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_can_update_a_tag()
     {
         $data = ['name' => $this->faker->word];
@@ -66,23 +69,23 @@ class TagControllerTest extends TestCase
         $response = $this->putJson("/api/tags/{$this->tag->id}", $data);
 
         $response->assertStatus(200)
-                 ->assertJson([
-                     'id' => $this->tag->id,
-                     'name' => $data['name'],
-                 ]);
+            ->assertJson([
+                'id' => $this->tag->id,
+                'name' => $data['name'],
+            ]);
 
         $this->assertDatabaseHas('tags', $data);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_can_delete_a_tag()
     {
         $response = $this->deleteJson("/api/tags/{$this->tag->id}");
 
         $response->assertStatus(200)
-                 ->assertJson([
-                     'message' => 'Tag deleted successfully',
-                 ]);
+            ->assertJson([
+                'message' => 'Tag deleted successfully',
+            ]);
 
         $this->assertDatabaseMissing('tags', ['id' => $this->tag->id]);
     }

@@ -2,7 +2,7 @@
 
 namespace Tests\Controller;
 
-use App\Http\Controllers\Histories\UserHistoryController;
+use App\Http\Controllers\History\UserHistoryController;
 use App\Models\Histories\UserHistory;
 use App\Services\UserHistoryService;
 use Illuminate\Http\JsonResponse;

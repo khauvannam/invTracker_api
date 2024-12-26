@@ -1,25 +1,24 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Tag;
 
 use App\Models\Tags\Tag;
-use Illuminate\Database\Eloquent\Collection;
 
 class TagRepository
 {
-    protected Tag $model;
+    protected $model;
 
     public function __construct(Tag $model)
     {
         $this->model = $model;
     }
 
-    public function getAll(): Collection
+    public function getAll() 
     {
         return $this->model->all();
     }
 
-    public function findById($id): Tag
+    public function findById($id) 
     {
         return $this->model->findOrFail($id);
     }
@@ -29,16 +28,17 @@ class TagRepository
         return $this->model->create($data);
     }
 
-    public function update($id, array $data): Tag
+    public function update($id, array $data)
     {
         $tag = $this->findById($id);
         $tag->update($data);
         return $tag;
     }
 
-    public function delete($id): void
+    public function delete($id)
     {
         $tag = $this->findById($id);
         $tag->delete();
+        return true;
     }
 }

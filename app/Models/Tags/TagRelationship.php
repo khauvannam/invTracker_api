@@ -2,6 +2,7 @@
 
 namespace App\Models\Tags;
 
+
 use App\Models\Folders\Folder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

@@ -33,12 +33,12 @@ class UserController extends Controller
     {
         $data = request()->all();
         $user = $this->userService->update($id, $data);
-        return response()->json($user);
+        return response()->json(['success' => $user], $user ? 200 : 400);
     }
     public function destroy(int $id)
     {
         $user = $this->userService->delete($id);
-        return response()->json($user);
+        return response()->json(['success' => $user]);
     }
 
 }

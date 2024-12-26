@@ -17,4 +17,8 @@ Route::apiResource('tags', TagController::class);
 
 Route::apiResource('user', UserController::class);
 
-Route::apiResource('folders', FolderController::class);
+Route::get('folders', [FolderController::class, 'index']); // Lấy danh sách
+Route::get('folders/{id}', [FolderController::class, 'show']); // Lấy chi tiết
+Route::post('folders', [FolderController::class, 'store']); // Tạo mới
+Route::put('folders/{id}', [FolderController::class, 'update']); // Cập nhật
+Route::delete('folders/{id}', [FolderController::class, 'destroy']); // Xóa

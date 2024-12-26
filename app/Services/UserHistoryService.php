@@ -4,7 +4,8 @@ namespace App\Services;
 
 
 use App\Models\Histories\UserHistory;
-use App\Repositories\UsersHistory\UserHistoryRepository;
+use App\Repositories\UserHistoryRepository;
+
 
 class UserHistoryService
 {

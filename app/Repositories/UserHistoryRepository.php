@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\UsersHistory;
+namespace App\Repositories;
 
 use App\Models\Histories\UserHistory;
 

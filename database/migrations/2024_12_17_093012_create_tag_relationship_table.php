@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('tag_relationship', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tag_id')->constrained()->onDelete('cascade'); // Khóa ngoại tới bảng tags
-            // $table->foreignId('item_id')->nullable()->constrained()->onDelete('cascade'); 
-            $table->foreignId('folder_id')->nullable()->constrained()->onDelete('cascade'); // Khóa ngoại tới bảng folders
+            $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade'); // Khóa ngoại tới bảng tags
+            $table->foreignId('folder_id')->nullable()->constrained('folders')->onDelete('cascade'); // Khóa ngoại tới bảng folders
             $table->timestamps();
         });
     }

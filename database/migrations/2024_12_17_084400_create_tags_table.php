@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name') -> index();
-            $table -> unsignedBigInteger('item_id') -> nullable();
-            $table -> unsignedBigInteger('folder_id') -> nullable();
+            $table->string('name')->index(); 
+            $table->unsignedBigInteger('item_id')->nullable(); 
+            $table->unsignedBigInteger('folder_id')->nullable(); 
             $table->timestamps();
+        
+            // Ràng buộc khóa ngoại
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('set null');
+            $table->foreign('folder_id')->references('id')->on('folders')->onDelete('set null');
 
             //index
 

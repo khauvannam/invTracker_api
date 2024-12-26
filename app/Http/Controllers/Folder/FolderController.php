@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Folder;
 use App\Models\Folders\Folder;
 use Illuminate\Database\Eloquent\Collection;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 class FolderController extends Controller
 {
     public function getAll(): Collection|array

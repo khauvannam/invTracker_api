@@ -2,37 +2,54 @@
 
 namespace App\Http\Controllers\Folder;
 
-use App\Models\Folders\Folder;
-use Illuminate\Database\Eloquent\Collection;
 use App\Http\Controllers\Controller;
+use App\Services\FolderService;
+use Illuminate\Http\Request;
+
 class FolderController extends Controller
 {
-    public function getAll(): Collection|array
+    protected FolderService $folderService;
+
+    public function __construct(FolderService $folderService)
     {
-        return Folder::all();
+        $this->folderService = $folderService;
     }
 
-    public function findById(int $id): Folder|array|null
+    public function index()
     {
-        return Folder::find($id);
+        $folders = $this->folderService->getAllFolders();
+        return response()->json($folders);
     }
 
-    public function create(array $data): Folder
+    public function show($id)
     {
-        return Folder::create($data);
+        $folder = $this->folderService->getFolderById($id);
+        return response()->json($folder);
     }
 
-    public function update(int $id, array $data): Folder
+    public function store(Request $request)
     {
-        $folder = Folder::findOrFail($id);
-        $folder->update($data);
-        return $folder;
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $folder = $this->folderService->createFolder($data);
+        return response()->json($folder, 201);
     }
 
-    public function delete(int $id): bool
+    public function update(Request $request, $id)
     {
-        $folder = Folder::findOrFail($id);
-        $folder->delete();
-        return true;
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $folder = $this->folderService->updateFolder($id, $data);
+        return response()->json($folder);
+    }
+
+    public function destroy($id)
+    {
+        $this->folderService->deleteFolder($id);
+        return response()->json(['message' => 'Folder deleted successfully']);
     }
 }
